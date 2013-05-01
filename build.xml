@@ -9,7 +9,7 @@
     <property name="external" location="external" />
     <property name="sources" location="sources" />
 
-    <property name="slf-version" value="1.5.5"/>
+    <property name="slf-version" value="1.6.2"/>
 
     <property name="jar" location="${lib}/${ant.project.name}-${slf-version}.jar" />
     <property name="sources-filename" value="${ant.project.name}-${slf-version}" />
