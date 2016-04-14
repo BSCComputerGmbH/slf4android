@@ -195,12 +195,8 @@ public class AndroidLogger extends MarkerIgnoringBase {
 			// Load and parse the properties.
 			Log.d(SLF4J_TAG, "Trying to load properties from: "
 			+ CONFIG_FILE_NAME);
-//			InputStream in = AndroidLogger.class.getClassLoader()
-//					.getResourceAsStream(CONFIG_FILE_NAME);
-			
-			//MO: SLF4J
-			InputStream in = AndroidLogger.class.getResourceAsStream(CONFIG_FILE_NAME);
-			
+			InputStream in = AndroidLogger.class.getClassLoader()
+					.getResourceAsStream(CONFIG_FILE_NAME);
 			if (null != in) {
 				Log.d(SLF4J_TAG, "Loading properties...");
 				Properties props = new java.util.Properties();
