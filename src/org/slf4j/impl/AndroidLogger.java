@@ -195,8 +195,12 @@ public class AndroidLogger extends MarkerIgnoringBase {
 			// Load and parse the properties.
 			Log.d(SLF4J_TAG, "Trying to load properties from: "
 			+ CONFIG_FILE_NAME);
-			InputStream in = AndroidLogger.class.getClassLoader()
-					.getResourceAsStream(CONFIG_FILE_NAME);
+//			InputStream in = AndroidLogger.class.getClassLoader()
+//					.getResourceAsStream(CONFIG_FILE_NAME);
+			
+			//MO: SLF4J
+			InputStream in = AndroidLogger.class.getResourceAsStream(CONFIG_FILE_NAME);
+			
 			if (null != in) {
 				Log.d(SLF4J_TAG, "Loading properties...");
 				Properties props = new java.util.Properties();
@@ -498,31 +502,41 @@ public class AndroidLogger extends MarkerIgnoringBase {
 	@Override
 	public final boolean isDebugEnabled() {
 		return this.level <= DEBUG
-				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.DEBUG));
+				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.DEBUG))
+				//MO: SLF4J
+				&& this.level != DISABLED;
 	}
 
 	@Override
 	public final boolean isErrorEnabled() {
 		return this.level <= ERROR
-				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.ERROR));
+				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.ERROR))
+				//MO: SLF4J
+				&& this.level != DISABLED;
 	}
 
 	@Override
 	public final boolean isInfoEnabled() {
 		return this.level <= INFO
-				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.INFO));
+				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.INFO))
+				//MO: SLF4J
+				&& this.level != DISABLED;
 	}
 
 	@Override
 	public final boolean isTraceEnabled() {
 		return this.level <= TRACE
-				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.VERBOSE));
+				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.VERBOSE))
+				//MO: SLF4J
+				&& this.level != DISABLED;
 	}
 
 	@Override
 	public final boolean isWarnEnabled() {
 		return this.level <= WARN
-				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.WARN));
+				&& (ignoreAndroidLevel || Log.isLoggable(tag, Log.WARN))
+				//MO: SLF4J
+				&& this.level != DISABLED;
 	}
 
 	@Override
